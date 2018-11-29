@@ -14,17 +14,17 @@ namespace Chapter8Basis
         private readonly ISave<Order> saver;
         private readonly IDelete<Order> deleter;
 
-        public OrderController(IRead<Order> orderReader, ISave<Order> orderSaver, IDelete<Order> orderDeleter)
+        public OrderController(IRead<Item> orderReader, ISave<Item> orderSaver, IDelete<Item> orderDeleter)
         {
             reader = orderReader;
             saver = orderSaver;
             deleter = orderDeleter;
         }
 
-        public void CreateOrder(Order order)
+        public void CreateOrder(Item item)
         {
-            saver.Save(order);
-            Console.WriteLine("CreateOrder: Saving order of " + order.product);
+            saver.Save(item);
+            Console.WriteLine("CreateOrder: Saving order of " + item.product);
         }
 
         public Order GetSingleOrder(Guid identity)
@@ -34,16 +34,16 @@ namespace Chapter8Basis
             return ord;
         }
 
-        public void UpdateOrder(Order order)
+        public void UpdateOrder(Item item)
         {
-            saver.Save(order);
+            saver.Save(item);
             Console.WriteLine("UpdateOrder: Saving order of " + order.product);
         }
 
-        public void DeleteOrder(Order order)
+        public void DeleteOrder(Item item)
         {
-            deleter.Delete(order);
-            Console.WriteLine("DeleteOrder: Delete order of " + order.product);
+            deleter.Delete(item);
+            Console.WriteLine("DeleteOrder: Delete order of " + item.product);
         }
     }   
 }

@@ -14,20 +14,52 @@ namespace Chapter8Basis
         static void Main(string[] args)
         {
 
+            Order order = new Order();
+            order.product = "Vector Robot";
+            order.amount = 24;
+            order.toString();
+            
 
             Console.WriteLine("=========CreateSeparateServices=========");
             OrderController sep = CreateSeparateServices();
+            sep.CreateOrder(order);
+             
+
 
             Console.WriteLine("=========CreateSingleService=========");
             OrderController sing = CreateSingleService();
+            sing.CreateOrder(order);
+
 
             Console.WriteLine("=========GenericController<Order>=========");
             GenericController<Order> generic = CreateGenericServices();
+            generic.CreateEntity(order);
+
+           
+
 
 
             Console.WriteLine("Hit any key to quit");
+            sep.DeleteOrder(order);
+            sing.DeleteOrder(order);
+            generic.DeleteEntity(order);
             Console.ReadKey();
         }
+
+        static OrderController GenericController()
+        {
+            Item item = new Item();
+            item.product = "gener";
+            item.cost = 23;
+        }
+
+        static OrderController ItemController()
+        {
+            Item item = new Item();
+            item.product = "gener";
+            item.cost = 23;
+        }
+    
 
         static OrderController CreateSeparateServices()
         {

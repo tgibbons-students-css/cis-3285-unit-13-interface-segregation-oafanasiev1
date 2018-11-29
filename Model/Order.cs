@@ -12,5 +12,10 @@ namespace Model
         public Guid id { get; set; }
         public string product { get; set; }
         public int amount { get; set; }
+
+        public string toString()
+        {
+            return "Order of 100 Candy Canes with " + id;
+        }
     }
 }
